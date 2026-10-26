@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffe4ef">
+<title>My Princess 💗</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --pink: #ff76a9;
+  --deep: #d63378;
+  --light: #fff0f6;
+  --paper: #fffafc;
+  --ink: #78465c;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: linear-gradient(135deg, #ffe5ef, #f9d9ff, #fff0f5);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* FLOATING DECORATIONS */
+
+#decorations {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.floaty {
+  position: absolute;
+  bottom: -40px;
+  animation: floatUp linear forwards;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% { opacity: 0.8; }
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #d63378;
+  outline-offset: 3px;
+}
+
+/* PASSWORD ENTRANCE */
+
+#entrance {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  overflow-y: auto;
+  background:
+    radial-gradient(circle at top left, #fff 0, transparent 40%),
+    linear-gradient(145deg, #ffe4ef, #f6d9ff, #fff0f6);
+}
+
+.lock-card {
+  width: min(100%, 390px);
+  padding: 30px 23px;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 28px;
+  background: rgba(255,255,255,.77);
+  box-shadow: 0 20px 60px #d66d9a2b;
+  backdrop-filter: blur(12px);
+}
+
+.lock-icon {
+  font-size: 54px;
+  animation: heartbeat 1.8s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.09); }
+}
+
+.lock-card h1 {
+  color: var(--deep);
+  font-size: 29px;
+  margin: 13px 0;
+}
+
+.lock-card p {
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.password-input {
+  width: 100%;
+  margin: 19px 0 12px;
+  padding: 14px;
+  border: 1px solid #f4b5d0;
+  border-radius: 14px;
+  background: white;
+  color: var(--deep);
+  text-align: center;
+  letter-spacing: 6px;
+  font-size: 21px;
+}
+
+.primary-btn {
+  border: none;
+  border-radius: 25px;
+  padding: 13px 23px;
+  color: white;
+  background: linear-gradient(135deg, #ff6fa7, #dc4384);
+  box-shadow: 0 6px 18px #e65b9538;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.primary-btn:active {
+  transform: scale(.96);
+}
+
+#passwordMessage {
+  min-height: 24px;
+  margin-top: 12px;
+  color: #cf3475;
+  font-size: 14px;
+}
+
+.tiny-note {
+  font-size: 12px !important;
+  opacity: .7;
+  margin-top: 14px;
+}
+
+/* FLOWER INTRO */
+
+#flowerIntro {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  text-align: center;
+  background: linear-gradient(145deg, #ffe1ed, #fff4fa, #f5dcff);
+}
+
+#flowerIntro.show {
+  display: flex;
+}
+
+.flower {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 25px;
+  animation: flowerAppear 1.5s ease both;
+}
+
+@keyframes flowerAppear {
+  from { transform: scale(.2) rotate(-40deg); opacity: 0; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.petal {
+  position: absolute;
+  width: 48px;
+  height: 70px;
+  top: 20px;
+  left: 51px;
+  border-radius: 50% 50% 45% 45%;
+  background: linear-gradient(#ffb6d2, #ff6fa7);
+  transform-origin: 24px 55px;
+  box-shadow: inset 0 0 10px #ffffff70;
+  animation: bloom 1.4s ease both;
+}
+
+.petal:nth-child(1) { transform: rotate(0deg) translateY(-15px); }
+.petal:nth-child(2) { transform: rotate(60deg) translateY(-15px); }
+.petal:nth-child(3) { transform: rotate(120deg) translateY(-15px); }
+.petal:nth-child(4) { transform: rotate(180deg) translateY(-15px); }
+.petal:nth-child(5) { transform: rotate(240deg) translateY(-15px); }
+.petal:nth-child(6) { transform: rotate(300deg) translateY(-15px); }
+
+@keyframes bloom {
+  from { opacity: 0; scale: .1; }
+  to { opacity: 1; scale: 1; }
+}
+
+.flower-center {
+  position: absolute;
+  left: 56px;
+  top: 55px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffdc78;
+  box-shadow: 0 0 20px #ffcb6c;
+  font-size: 21px;
+}
+
+#flowerIntro h2 {
+  color: var(--deep);
+  margin-bottom: 12px;
+  font-size: 28px;
+}
+
+#flowerIntro p {
+  max-width: 320px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* BOOK AREA */
+
+#bookApp {
+  display: none;
+  height: 100dvh;
+  min-height: 0;
+  padding: 12px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#bookApp.show {
+  display: flex;
+}
+
+.book-top {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.book-top h1 {
+  font-size: clamp(19px, 5vw, 27px);
+  color: var(--deep);
+}
+
+.book-top p {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.book {
+  position: relative;
+  width: min(100%, 480px);
+  height: min(69dvh, 620px);
+  min-height: 330px;
+  perspective: 1400px;
+  flex-shrink: 1;
+}
+
+.page {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(17px, 4vw, 28px);
+  overflow: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid #f6c3d8;
+  border-radius: 8px 23px 23px 8px;
+  background:
+    linear-gradient(90deg, #f7d7e5 0, #fffafc 5%, #fffafc 100%);
+  box-shadow: 0 12px 35px #9d52732b;
+  text-align: center;
+  scrollbar-width: thin;
+  scrollbar-color: #f2a8c8 transparent;
+}
+
+.page.active {
+  display: flex;
+  animation: pageEnter .35s ease both;
+}
+
+@keyframes pageEnter {
+  from { opacity: .3; transform: translateX(12px) rotateY(-3deg); }
+  to { opacity: 1; transform: translateX(0) rotateY(0); }
+}
+
+.page h2 {
+  width: 100%;
+  font-size: clamp(22px, 6vw, 30px);
+  line-height: 1.3;
+  color: var(--deep);
+  margin: 8px 0 14px;
+}
+
+.page h3 {
+  color: #c84b81;
+  margin: 10px 0;
+}
+
+.page p {
+  font-size: clamp(14px, 3.8vw, 16px);
+  line-height: 1.8;
+  margin: 7px 0;
+}
+
+.page-emoji {
+  font-size: 38px;
+  margin-top: 8px;
+}
+
+.page-number {
+  margin-top: auto;
+  padding-top: 16px;
+  font-size: 11px;
+  opacity: .6;
+}
+
+.nav-area {
+  width: min(100%, 480px);
+  flex-shrink: 0;
+}
+
+.progress-track {
+  height: 5px;
+  border-radius: 9px;
+  background: #f4c9db;
+  overflow: hidden;
+  margin-bottom: 9px;
+}
+
+#progress {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ff8bb7, #d63378);
+  transition: width .3s;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-buttons button {
+  padding: 10px 15px;
+  font-size: 13px;
+}
+
+#pageCounter {
+  font-size: 12px;
+  color: #a04d73;
+}
+
+/* DECORATIVE DIVIDER */
+
+.divider {
+  color: #e78aaf;
+  letter-spacing: 5px;
+  margin: 12px 0;
+}
+
+/* PHOTO GALLERY */
+
+.photo-card {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 10px 17px;
+  margin: 10px auto;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 5px 17px #bd77952b;
+  transform: rotate(-1deg);
+  transition: transform .3s;
+}
+
+.photo-card:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.photo-card img {
+  width: 100%;
+  height: clamp(170px, 36vh, 300px);
+  display: block;
+  object-fit: cover;
+  border-radius: 3px;
+  background: #ffe5ef;
+}
+
+.photo-card p {
+  margin-top: 9px;
+  font-style: italic;
+  color: #b64c7a;
+  font-size: 14px;
+}
+
+/* SMALL INTERACTIVE ELEMENTS */
+
+.message-box {
+  width: 100%;
+  margin: 12px 0;
+  padding: 17px 13px;
+  border: 1px dashed #f0a3c2;
+  border-radius: 16px;
+  background: #fff0f6;
+  line-height: 1.8;
+}
+
+.action-btn {
+  margin: 8px 4px;
+  border: 1px solid #f2a4c4;
+  border-radius: 22px;
+  padding: 10px 16px;
+  color: #b92e6a;
+  background: #fff0f6;
+}
+
+.action-btn:active {
+  background: #ffd4e5;
+}
+
+  /* LOVE NOTES JAR */
+
+.jar {
+  width: 120px;
+  height: 150px;
+  margin: 15px auto;
+  position: relative;
+  display: grid;
+  place-items: center;
+  font-size: 85px;
+  cursor: pointer;
+  animation: jarWiggle 3s infinite ease-in-out;
+}
+
+@keyframes jarWiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.jar-note {
+  padding: 16px;
+  background: #fff0b9;
+  border-radius: 12px;
+  color: #855b3d;
+  margin: 12px 0;
+  min-height: 70px;
+  display: grid;
+  place-items: center;
+  line-height: 1.7;
+}
+
+/* MEMORY GAME */
+
+.game-grid {
+  width: 100%;
+  max-width: 300px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 15px auto;
+}
+
+.game-card {
+  aspect-ratio: 1;
+  border: 1px solid #f2b0cc;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffb9d5, #ffe8f1);
+  color: #b82f70;
+  font-size: 25px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 3px 7px #bd77951c;
+}
+
+.game-card.matched {
+  background: #f7e4f5;
+  opacity: .75;
+}
+
+.game-status {
+  min-height: 30px;
+  font-size: 13px !important;
+  color: #c13778;
+}
+
+/* STARRY NIGHT */
+
+#starSky {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(#241d53, #744b8b, #c078a5);
+  margin: 12px 0;
+}
+
+.star {
+  position: absolute;
+  border: 0;
+  background: transparent;
+  color: #fff5b8;
+  font-size: 24px;
+  text-shadow: 0 0 12px #fff5b8;
+  animation: twinkle 1.5s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .4; transform: scale(.8); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+
+/* QUIZ */
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px;
+  border: 1px solid #f0b4cd;
+  border-radius: 12px;
+  background: white;
+  color: #a13f6a;
+  text-align: left;
+}
+
+.quiz-option:active {
+  background: #ffe1ed;
+}
+
+.quiz-option:disabled {
+  opacity: .7;
+}
+
+#quizFeedback {
+  min-height: 35px;
+  font-size: 13px;
+}
+
+/* MUSIC PLAYER */
+
+.music-disc {
+  width: 110px;
+  height: 110px;
+  margin: 20px auto;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: repeating-radial-gradient(
+    circle,
+    #7b355e 0,
+    #7b355e 4px,
+    #bd5d8b 5px,
+    #bd5d8b 8px
+  );
+  color: white;
+  font-size: 28px;
+  box-shadow: 0 5px 20px #7b355e40;
+}
+
+.music-disc.playing {
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.music-controls {
+  margin: 15px 0;
+}
+
+/* FINAL SURPRISE */
+
+.final-heart {
+  font-size: 75px;
+  animation: heartbeat 1.4s infinite;
+}
+
+.final-signature {
+  font-size: 21px !important;
+  color: #cf3d7d;
+  font-style: italic;
+  margin-top: 22px !important;
+}
+
+@media (max-height: 650px) {
+  #bookApp { gap: 5px; padding: 5px; }
+  .book-top h1 { font-size: 19px; }
+  .book { height: 66dvh; min-height: 260px; }
+  .page { padding: 13px; }
+  .page h2 { font-size: 22px; margin: 5px 0 8px; }
+  .page p { font-size: 13px; line-height: 1.6; }
+  .page-emoji { font-size: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="decorations"></div>
+
+<!-- PASSWORD SCREEN -->
+<section id="entrance">
+  <div class="lock-card">
+    <div class="lock-icon">🔐💗</div>
+    <h1>A Little Secret...</h1>
+    <p>
+      A tiny world filled with flowers, memories, and surprises
+      is waiting for you.
+    </p>
+    <p><strong>Only my princess knows the magic number. 👑</strong></p>
+
+    <form id="passwordForm">
+      <input
+        class="password-input"
+        id="passwordInput"
+        type="password"
+        inputmode="numeric"
+        maxlength="6"
+        placeholder="••••••"
+        aria-label="Enter password"
+        autocomplete="off"
+        required
+      >
+      <br>
+      <button class="primary-btn" type="submit">
+        Unlock My Little World 💌
+      </button>
+    </form>
+
+    <p id="passwordMessage" aria-live="polite"></p>
+    <p class="tiny-note">Made with love, just for you. 🌷</p>
+  </div>
+</section>
+
+<!-- FLOWER WELCOME -->
+<section id="flowerIntro">
+  <div class="flower" aria-label="Blooming pink flower">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="flower-center">💗</div>
+  </div>
+
+  <h2>For My Princess 👑</h2>
+  <p>
+    A flower for your smile, a page for your memories,
+    and a little world created just for you.
+  </p>
+  <button class="primary-btn" id="enterBook">
+    Open Your Storybook 📖
+  </button>
+</section>
+
+<!-- STORYBOOK -->
+<main id="bookApp">
+
+  <header class="book-top">
+    <h1>🌸 My Princess's Storybook 🌸</h1>
+    <p>A little world made with love by Kunal 💗</p>
+  </header>
+
+  <div class="book" id="book">
+
+    <!-- PAGE 1: WELCOME -->
+    <section class="page active" data-page="1">
+      <div class="page-emoji">🌷💗🌷</div>
+      <h2>Welcome, My Princess</h2>
+      <div class="divider">♡ ── ♡ ── ♡</div>
+      <p>
+        Once upon a time, someone decided to make a little
+        corner of the internet extra special for one person.
+      </p>
+      <p>
+        That person is you, Princess. 👑
+      </p>
+      <p>
+        Every page holds a tiny surprise. Every flower has a
+        little message. And every photo is here to make you smile.
+      </p>
+      <div class="message-box">
+        Take your time, turn the pages, and enjoy this little
+        adventure. 💌
+      </div>
+      <p class="page-number">Page 1 · The beginning</p>
+    </section>
+
+    <!-- PAGE 2: LOVE LETTER -->
+    <section class="page" data-page="2">
+      <div class="page-emoji">💌</div>
+      <h2>A Letter for My Princess</h2>
+
+      <p>Hey, My Princess… 👑💗</p>
+
+      <p>
+        I made this little world with you in my mind.
+        The colours, flowers, words, and tiny hearts are
+        all part of a surprise I wanted to give you.
+      </p>
+
+      <p>
+        If I could give you one thing, it would be the chance
+        to see yourself through my eyes, even for a moment.
+        Then you might understand why your smile is so precious
+        and why the little things about you mean so much.
+      </p>
+
+      <p>
+        I don't need our story to be perfect. I hope it can be
+        filled with laughter, silly moments, understanding,
+        and memories we can look back on with happy smiles.
+      </p>
+
+      <p>
+        You deserve kindness, happiness, respect, and all the
+        little reasons to smile that life can offer.
+      </p>
+
+      <p>
+        This isn't just a website. It's a little reminder
+        that you are appreciated and that someone took time
+        to create something especially for you.
+      </p>
+
+      <p>
+        Turn the pages, Princess. There are more surprises
+        waiting for you. 🌸
+      </p>
+
+      <p class="final-signature">With love, Your Kunal 💗</p>
+      <p class="page-number">Page 2 · A little letter</p>
+    </section>
+
+    <!-- PAGE 3: ABOUT HER -->
+    <section class="page" data-page="3">
+      <div class="page-emoji">👑🌸</div>
+      <h2>What Makes You Special</h2>
+
+      <p>
+        Princess, your beauty is more than a photograph.
+        It's also the personality, expressions, and little
+        details that make you who you are.
+      </p>
+
+      <div class="message-box">
+        🌷 Your smile — a lovely part of your expressions.
+      </div>
+
+      <div class="message-box">
+        🦋 Your personality — something that belongs
+        entirely to you.
+      </div>
+
+      <div class="message-box">
+        💗 Your little habits — the tiny things that make
+        everyday moments memorable.
+      </div>
+
+      <div class="message-box">
+        ✨ Your dreams — the things you want to learn,
+        explore, and achieve.
+      </div>
+
+      <div class="message-box">
+        🌸 Your heart — the kindness and care you choose
+        to share with others.
+      </div>
+
+      <p>
+        Never forget that you deserve to be appreciated
+        for all the things that make you uniquely you.
+      </p>
+
+      <p class="page-number">Page 3 · Simply you</p>
+    </section>
+
+        <!-- PAGE 4: FIRST PHOTO -->
+    <section class="page" data-page="4">
+      <div class="page-emoji">📸</div>
+      <h2>A Little Photo Gallery</h2>
+      <p>Some lovely pictures of my princess. 🌸</p>
+
+      <div class="photo-card">
+        <img src="photos/photo1.jpg" alt="Princess photo 1">
+        <p>A little moment worth remembering 💗</p>
+      </div>
+
+      <div class="photo-card">
+        <img src="photos/photo2.jpg" alt="Princess photo 2">
+        <p>Another beautiful memory 🌷</p>
+      </div>
+
+      <div class="photo-card">
+        <img src="photos/photo3.jpg" alt="Princess photo 3">
+        <p>One more reason to smile ✨</p>
+      </div>
+
+      <p class="page-number">Page 4 · Photo memories</p>
+    </section>
+
+    <!-- PAGE 5: SECOND PHOTO -->
+    <section class="page" data-page="5">
+      <div class="page-emoji">🎀</div>
+      <h2>More Lovely Memories</h2>
+      <p>Because one page wasn't enough! 💕</p>
+
+      <div class="photo-card">
+        <img src="photos/photo4.jpg" alt="Princess photo 4">
+        <p>A picture full of personality 🦋</p>
+      </div>
+
+      <div class="photo-card">
+        <img src="photos/photo5.jpg" alt="Princess photo 5">
+        <p>A moment to keep in this little book 🌸</p>
+      </div>
+
+      <div class="photo-card">
+        <img src="photos/photo6.jpg" alt="Princess photo 6">
+        <p>Always be wonderfully yourself 💗</p>
+      </div>
+
+      <p class="page-number">Page 5 · More memories</p>
+    </section>
+
+    <!-- PAGE 6: COMPLIMENT GENERATOR -->
+    <section class="page" data-page="6">
+      <div class="page-emoji">🎁</div>
+      <h2>A Little Compliment Machine</h2>
+      <p>
+        Tap the button whenever you need a tiny reminder
+        of how special you are. 💗
+      </p>
+
+      <div class="message-box" id="complimentText" aria-live="polite">
+        Princess, you're one of a kind. 🌷
+      </div>
+
+      <button class="primary-btn" id="complimentButton">
+        Give Me a Compliment 💌
+      </button>
+
+      <p class="page-number">Page 6 · Little reminders</p>
+    </section>
+
+    <!-- PAGE 7: LOVE NOTE JAR -->
+    <section class="page" data-page="7">
+      <div class="page-emoji">🫙💗</div>
+      <h2>A Jar Full of Little Notes</h2>
+
+      <p>
+        Imagine this jar filled with tiny folded notes,
+        each carrying a sweet thought.
+      </p>
+
+      <button class="action-btn jar" id="jarButton"
+        aria-label="Open a love note">🫙</button>
+
+      <p>Tap the jar to pick a note!</p>
+
+      <div class="jar-note" id="jarNote" aria-live="polite">
+        Your first little note is waiting here. 🌸
+      </div>
+
+      <p class="page-number">Page 7 · Tiny notes</p>
+    </section>
+
+    <!-- PAGE 8: MEMORY MATCHING GAME -->
+    <section class="page" data-page="8">
+      <div class="page-emoji">🎮</div>
+      <h2>Princess's Matching Game</h2>
+
+      <p>
+        Find all the matching pairs! Tap two cards at a time.
+      </p>
+
+      <div class="game-grid" id="gameGrid"></div>
+
+      <p class="game-status" id="gameStatus" aria-live="polite">
+        Find all 6 matching pairs. Good luck! 💗
+      </p>
+
+      <button class="action-btn" id="restartGame">
+        Play Again 🔄
+      </button>
+
+      <p class="page-number">Page 8 · A little game</p>
+    </section>
+
+    <!-- PAGE 9: STARRY SKY -->
+    <section class="page" data-page="9">
+      <div class="page-emoji">🌙✨</div>
+      <h2>A Sky Full of Wishes</h2>
+
+      <p>
+        Tap any star to discover a little wish for you.
+      </p>
+
+      <div id="starSky" aria-label="Interactive starry sky">
+        <button class="star" style="top:15%;left:15%"
+          data-wish="May your days be full of laughter. 🌸">✦</button>
+
+        <button class="star" style="top:40%;left:40%"
+          data-wish="May you always have courage to follow your dreams. ✨">✧</button>
+
+        <button class="star" style="top:15%;left:70%"
+          data-wish="May kind people and happy memories find you. 💗">✦</button>
+
+        <button class="star" style="top:65%;left:22%"
+          data-wish="May you always remember your own worth. 🌷">✧</button>
+
+        <button class="star" style="top:70%;left:78%"
+          data-wish="May tomorrow bring you something beautiful. 🦋">✦</button>
+
+        <button class="star" style="top:43%;left:83%"
+          data-wish="May you always have reasons to smile. 💕">✧</button>
+
+        <button class="star" style="top:76%;left:48%"
+          data-wish="Keep shining in your own unique way. 👑">✦</button>
+      </div>
+
+      <div class="message-box" id="wishText" aria-live="polite">
+        Your wish will appear here. 🌟
+      </div>
+
+      <p class="page-number">Page 9 · Wishes for you</p>
+    </section>
+
+    <!-- PAGE 10: MEMORY QUIZ -->
+    <section class="page" data-page="10">
+      <div class="page-emoji">🧩</div>
+      <h2>Our Little Memory Quiz</h2>
+
+      <p>
+        Let's see how well you know our story!
+      </p>
+
+      <p>
+        <strong>Question:</strong>
+        What makes a memory meaningful?
+      </p>
+
+      <button class="quiz-option" data-correct="false">
+        A. Only expensive gifts
+      </button>
+
+      <button class="quiz-option" data-correct="true">
+        B. The people, feelings, and moments we share
+      </button>
+
+      <button class="quiz-option" data-correct="false">
+        C. Having a perfect photograph
+      </button>
+
+      <div class="message-box" id="quizFeedback" aria-live="polite">
+        Choose your answer! 💗
+      </div>
+
+      <button class="action-btn" id="resetQuiz">
+        Try Again 🔄
+      </button>
+
+      <p class="page-number">Page 10 · A little quiz</p>
+    </section>
+
+    <!-- PAGE 11: MUSIC -->
+    <section class="page" data-page="11">
+      <div class="page-emoji">🎵</div>
+      <h2>A Little Music Corner</h2>
+
+      <div class="music-disc" id="musicDisc">♫</div>
+
+      <p><strong>Our Little Love Theme 💗</strong></p>
+
+      <p>
+        Choose a song that makes you think of happy moments.
+      </p>
+
+      <p>
+        To add your own song, place an audio file named
+        <strong>song.mp3</strong> beside this HTML file.
+      </p>
+
+      <audio id="music" preload="none" loop>
+        <source src="song.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+      </audio>
+
+      <div class="music-controls">
+        <button class="primary-btn" id="musicButton">
+          ▶ Play Music
+        </button>
+      </div>
+
+      <p id="musicStatus" aria-live="polite">
+        Music is paused. Tap Play when you're ready. 🌷
+      </p>
+
+      <p class="page-number">Page 11 · Music and memories</p>
+    </section>
+
+    <!-- PAGE 12: FINAL SURPRISE -->
+    <section class="page" data-page="12">
+      <div class="page-emoji">🌹✨🌹</div>
+      <h2>One Last Little Surprise</h2>
+
+      <div class="final-heart">💗</div>
+
+      <p>My Princess, you've reached the last page!</p>
+
+      <p>
+        I hope this tiny world made you smile.
+        I created it to celebrate you and all the little
+        things that make you uniquely yourself.
+      </p>
+
+      <p>
+        The storybook ends here, but there's always room
+        for new memories, laughter, kindness, and wonderful
+        moments in the days ahead.
+      </p>
+
+      <div class="message-box">
+        Never forget to take care of yourself, believe
+        in your dreams, and give yourself the same kindness
+        you give to others. 🌷
+      </div>
+
+      <p class="final-signature">
+        Made with love,<br>
+        Your Kunal 💗👑
+      </p>
+
+      <button class="primary-btn" id="celebrateButton">
+        A Little Celebration 🎉
+      </button>
+
+      <p class="page-number">Page 12 · Until the next story</p>
+    </section>
+
+  </div>
+
+  <!-- BOOK NAVIGATION -->
+  <div class="nav-area">
+    <div class="progress-track">
+      <div id="progress"></div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="action-btn" id="prevButton">
+        ← Previous
+      </button>
+
+      <span id="pageCounter">1 / 12</span>
+
+      <button class="primary-btn" id="nextButton">
+        Next →
+      </button>
+    </div>
+  </div>
+
+  <p style="font-size:11px;text-align:center">
+    Swipe left or right to turn pages 💗
+  </p>
+
+</main>
+
+<script>
+/* =====================================
+   1. PASSWORD AND FLOWER INTRODUCTION
+===================================== */
+
+const PASSWORD = "120511";
+
+const entrance = document.getElementById("entrance");
+const passwordForm = document.getElementById("passwordForm");
+const passwordInput = document.getElementById("passwordInput");
+const passwordMessage = document.getElementById("passwordMessage");
+const flowerIntro = document.getElementById("flowerIntro");
+const bookApp = document.getElementById("bookApp");
+
+passwordForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  if (passwordInput.value === PASSWORD) {
+    entrance.classList.add("hidden");
+    flowerIntro.classList.add("show");
+    passwordMessage.textContent = "";
+  } else {
+    passwordMessage.textContent =
+      "Oops, that's not the magic number. Try again! 💗";
+
+    passwordInput.value = "";
+    passwordInput.focus();
+  }
+});
+
+document.getElementById("enterBook").addEventListener("click", function() {
+  flowerIntro.classList.remove("show");
+  bookApp.classList.add("show");
+
+  startDecorations();
+  showPage(0);
+});
+
+
+/* =====================================
+   2. SWIPEABLE STORYBOOK
+===================================== */
+
+const pages = Array.from(document.querySelectorAll(".page"));
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+const pageCounter = document.getElementById("pageCounter");
+const progress = document.getElementById("progress");
+const book = document.getElementById("book");
+
+let currentPage = 0;
+
+function showPage(index) {
+  index = Math.max(0, Math.min(index, pages.length - 1));
+  currentPage = index;
+
+  pages.forEach((page, i) => {
+    page.classList.toggle("active", i === currentPage);
+  });
+
+  pageCounter.textContent =
+    (currentPage + 1) + " / " + pages.length;
+
+  progress.style.width =
+    ((currentPage + 1) / pages.length * 100) + "%";
+
+  prevButton.disabled = currentPage === 0;
+  nextButton.disabled = currentPage === pages.length - 1;
+
+  prevButton.style.opacity = currentPage === 0 ? ".45" : "1";
+  nextButton.style.opacity =
+    currentPage === pages.length - 1 ? ".45" : "1";
+
+  prevButton.textContent =
+    currentPage === 0 ? "← Start" : "← Previous";
+
+  nextButton.textContent =
+    currentPage === pages.length - 1 ? "Finished 💗" : "Next →";
+
+  pages[currentPage].scrollTop = 0;
+}
+
+prevButton.addEventListener("click", function() {
+  showPage(currentPage - 1);
+});
+
+nextButton.addEventListener("click", function() {
+  showPage(currentPage + 1);
+});
+
+
+/* Touch swipe support */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+book.addEventListener("touchstart", function(event) {
+  const touch = event.changedTouches[0];
+  touchStartX = touch.clientX;
+  touchStartY = touch.clientY;
+}, { passive: true });
+
+book.addEventListener("touchend", function(event) {
+  const touch = event.changedTouches[0];
+
+  const dx = touch.clientX - touchStartX;
+  const dy = touch.clientY - touchStartY;
+
+  // Only turn pages when the gesture is mainly horizontal.
+  if (Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+    if (dx < 0) {
+      showPage(currentPage + 1);
+    } else {
+      showPage(currentPage - 1);
+    }
+  }
+}, { passive: true });
+
+
+/* Keyboard navigation for testing on a computer */
+
+document.addEventListener("keydown", function(event) {
+  if (!bookApp.classList.contains("show")) return;
+
+  if (event.key === "ArrowLeft") {
+    showPage(currentPage - 1);
+  }
+
+  if (event.key === "ArrowRight") {
+    showPage(currentPage + 1);
+  }
+});
+
+
+/* =====================================
+   3. FLOATING HEARTS AND PETALS
+===================================== */
+
+const decorations = document.getElementById("decorations");
+
+let decorationTimer = null;
+
+function createDecoration() {
+  const item = document.createElement("span");
+  const symbols = ["💗", "💕", "🌸", "🌷", "✨", "🦋"];
+
+  item.className = "floaty";
+  item.textContent = symbols[
+    Math.floor(Math.random() * symbols.length)
+  ];
+
+  item.style.left = Math.random() * 100 + "%";
+  item.style.fontSize = (12 + Math.random() * 16) + "px";
+  item.style.animationDuration = (6 + Math.random() * 6) + "s";
+
+  decorations.appendChild(item);
+
+  setTimeout(function() {
+    item.remove();
+  }, 13000);
+}
+
+function startDecorations() {
+  if (decorationTimer) return;
+
+  for (let i = 0; i < 8; i++) {
+    setTimeout(createDecoration, i * 180);
+  }
+
+  decorationTimer = setInterval(createDecoration, 700);
+}
+
+
+/* =====================================
+   4. COMPLIMENT GENERATOR
+===================================== */
+
+const compliments = [
+  "Your smile can make an ordinary moment feel special. 🌷",
+  "Your personality is uniquely yours. Never lose that spark. ✨",
+  "You deserve the same kindness you give to others. 💗",
+  "Your little habits are part of what makes you you. 🦋",
+  "Your dreams deserve time, effort, and belief. 🌟",
+  "You can be gentle and strong at the same time. 🌸",
+  "Your laughter is a lovely part of who you are. 💕",
+  "You deserve people who listen to and respect you. 👑",
+  "Your ideas and opinions deserve to be heard. 💌",
+  "You don't have to be perfect to be wonderful. 🌷",
+  "The world is more interesting because everyone is different—including you. 🦋",
+  "You deserve peaceful days and happy memories. ☁️",
+  "Your curiosity can take you to wonderful places. 🌍",
+  "Being yourself is something worth celebrating. 🎀",
+  "You have so many things left to learn and discover. 🌟",
+  "Your small achievements deserve celebration too. 🎉",
+  "You deserve friendships built on trust and honesty. 💗",
+  "You can always keep growing at your own pace. 🌱",
+  "Your creativity can make ordinary things beautiful. 🎨",
+  "Never forget to make time for your own happiness. 🌸",
+  "You deserve to feel safe, respected, and appreciated. 💕",
+  "You can have a difficult day and still be doing your best. 🌷",
+  "Your kindness can make a difference, even in small ways. 🦋",
+  "There is no need to compare your journey with anyone else's. 🌈",
+  "May you always find reasons to believe in yourself. 👑"
+];
+
+let previousCompliment = -1;
+
+document.getElementById("complimentButton").addEventListener("click", function() {
+  let index;
+
+  do {
+    index = Math.floor(Math.random() * compliments.length);
+  } while (index === previousCompliment && compliments.length > 1);
+
+  previousCompliment = index;
+
+  document.getElementById("complimentText").textContent =
+    compliments[index];
+});
+
+
+/* =====================================
+   5. JAR OF LITTLE NOTES
+===================================== */
+
+const loveNotes = [
+  "I hope something makes you smile today. 🌸",
+  "Remember to take care of yourself, Princess. 💗",
+  "Your happiness matters. 👑",
+  "May your favourite dreams come a little closer. ✨",
+  "You deserve patience and understanding. 🌷",
+  "Don't forget to celebrate your little victories. 🎉",
+  "Take a breath. You don't need to do everything at once. ☁️",
+  "May you find beauty in ordinary moments. 🦋",
+  "Keep being curious about the world. 🌍",
+  "Your feelings deserve to be treated with care. 💌",
+  "May you have a peaceful and restful night. 🌙",
+  "One small step is still progress. 🌱",
+  "Keep a little room for fun and laughter. 🎀",
+  "You deserve respect, always. 💕",
+  "May tomorrow bring you a lovely surprise. 🌟"
+];
+
+let lastNote = -1;
+
+document.getElementById("jarButton").addEventListener("click", function() {
+  let index;
+
+  do {
+    index = Math.floor(Math.random() * loveNotes.length);
+  } while (index === lastNote && loveNotes.length > 1);
+
+  lastNote = index;
+
+  const note = document.getElementById("jarNote");
+
+  note.style.opacity = "0";
+
+  setTimeout(function() {
+    note.textContent = loveNotes[index];
+    note.style.opacity = "1";
+  }, 160);
+});
+
+
+/* =====================================
+   6. MATCHING-CARD GAME
+===================================== */
+
+const gameGrid = document.getElementById("gameGrid");
+const gameStatus = document.getElementById("gameStatus");
+const gameSymbols = ["💗", "🌸", "🦋", "🌷", "⭐", "🎀"];
+
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+let matchedPairs = 0;
+let moves = 0;
+let gameVersion = 0;
+
+function startGame() {
+  gameVersion++;
+
+  const version = gameVersion;
+
+  gameGrid.innerHTML = "";
+  firstCard = null;
+  secondCard = null;
+  lockBoard = false;
+  matchedPairs = 0;
+  moves = 0;
+
+  gameStatus.textContent = "Find all 6 matching pairs. Good luck! 💗";
+
+  const cards = [...gameSymbols, ...gameSymbols]
+    .sort(() => Math.random() - 0.5);
+
+  cards.forEach(function(symbol) {
+    const card = document.createElement("button");
+
+    card.type = "button";
+    card.className = "game-card";
+    card.textContent = "❔";
+    card.dataset.symbol = symbol;
+    card.setAttribute("aria-label", "Hidden matching card");
+
+    card.addEventListener("click", function() {
+      if (
+        version !== gameVersion ||
+        lockBoard ||
+        card.classList.contains("matched") ||
+        card === firstCard
+      ) {
+        return;
+      }
+
+      card.textContent = symbol;
+      card.setAttribute("aria-label", symbol);
+
+      if (!firstCard) {
+        firstCard = card;
+        return;
+      }
+
+      secondCard = card;
+      moves++;
+
+      if (firstCard.dataset.symbol === secondCard.dataset.symbol) {
+        firstCard.classList.add("matched");
+        secondCard.classList.add("matched");
+
+        firstCard.disabled = true;
+        secondCard.disabled = true;
+
+        matchedPairs++;
+        firstCard = null;
+        secondCard = null;
+
+        if (matchedPairs === gameSymbols.length) {
+          gameStatus.textContent =
+            "You did it, Princess! 🎉 All pairs found in " +
+            moves + " moves! 💗";
+          burstHearts();
+        } else {
+          gameStatus.textContent =
+            "Lovely match! 💗 Pairs: " +
+            matchedPairs + "/6 · Moves: " + moves;
+        }
+      } else {
+        lockBoard = true;
+
+        gameStatus.textContent = "Not a match. Try again! 🌷";
+
+        setTimeout(function() {
+          if (version !== gameVersion) return;
+
+          firstCard.textContent = "❔";
+          secondCard.textContent = "❔";
+
+          firstCard.setAttribute("aria-label", "Hidden matching card");
+          secondCard.setAttribute("aria-label", "Hidden matching card");
+
+          firstCard = null;
+          secondCard = null;
+          lockBoard = false;
+        }, 750);
+      }
+    });
+
+    gameGrid.appendChild(card);
+  });
+}
+
+document.getElementById("restartGame").addEventListener("click", startGame);
+
+startGame();
+
+
+/* =====================================
+   7. INTERACTIVE STARRY SKY
+===================================== */
+
+const wishText = document.getElementById("wishText");
+
+document.querySelectorAll(".star").forEach(function(star) {
+  star.addEventListener("click", function() {
+    wishText.textContent = star.dataset.wish;
+  });
+});
+
+
+/* =====================================
+   8. LITTLE MEMORY QUIZ
+===================================== */
+
+document.querySelectorAll(".quiz-option").forEach(function(option) {
+  option.addEventListener("click", function() {
+    const feedback = document.getElementById("quizFeedback");
+
+    document.querySelectorAll(".quiz-option").forEach(function(button) {
+      button.disabled = true;
+    });
+
+    if (option.dataset.correct === "true") {
+      feedback.textContent =
+        "That's right! The people and feelings make a moment meaningful. 💗";
+    } else {
+      feedback.textContent =
+        "Not quite! It's the people, feelings, and moments we share. 🌷";
+    }
+  });
+});
+
+document.getElementById("resetQuiz").addEventListener("click", function() {
+  document.getElementById("quizFeedback").textContent =
+    "Choose your answer! 💗";
+
+  document.querySelectorAll(".quiz-option").forEach(function(button) {
+    button.disabled = false;
+  });
+});
+
+
+/* =====================================
+   9. MUSIC PLAYER
+===================================== */
+
+const music = document.getElementById("music");
+const musicButton = document.getElementById("musicButton");
+const musicDisc = document.getElementById("musicDisc");
+const musicStatus = document.getElementById("musicStatus");
+
+musicButton.addEventListener("click", async function() {
+  if (music.paused) {
+    try {
+      await music.play();
+
+      musicButton.textContent = "❚❚ Pause Music";
+      musicDisc.classList.add("playing");
+      musicStatus.textContent = "Enjoy your little music moment. 🎵";
+    } catch (error) {
+      musicStatus.textContent =
+        "Add a working song.mp3 file beside index.html, then try again. 🎵";
+    }
+  } else {
+    music.pause();
+
+    musicButton.textContent = "▶ Play Music";
+    musicDisc.classList.remove("playing");
+    musicStatus.textContent = "Music is paused. 🌷";
+  }
+});
+
+music.addEventListener("ended", function() {
+  musicButton.textContent = "▶ Play Music";
+  musicDisc.classList.remove("playing");
+});
+
+music.addEventListener("error", function() {
+  musicStatus.textContent =
+    "Music file not found. Add song.mp3 beside index.html. 🎵";
+});
+
+
+/* =====================================
+   10. FINAL CELEBRATION
+===================================== */
+
+function burstHearts() {
+  const symbols = ["💗", "💕", "🌸", "✨", "🌷", "🎉"];
+
+  for (let i = 0; i < 30; i++) {
+    const item = document.createElement("span");
+
+    item.className = "floaty";
+    item.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    item.style.left = Math.random() * 100 + "%";
+    item.style.bottom = "0";
+    item.style.fontSize = (18 + Math.random() * 18) + "px";
+    item.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+    decorations.appendChild(item);
+
+    setTimeout(function() {
+      item.remove();
+    }, 8000);
+  }
+}
+
+document.getElementById("celebrateButton").addEventListener("click", function() {
+  burstHearts();
+
+  this.textContent = "Sending you a little happiness! 💗";
+
+  const originalText = this.textContent;
+
+  setTimeout(() => {
+    this.textContent = originalText;
+  }, 2000);
+});
+
+
+/* =====================================
+   11. STARTUP
+===================================== */
+
+// Keep the password screen visible until the correct
+// password is entered. The book starts on page one.
+showPage(0);
+
+</script>
+
+</body>
+</html>
